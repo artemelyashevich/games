@@ -152,19 +152,16 @@ public class TicTacToe {
                 tile.setFont(new Font("Arial", Font.BOLD, 120));
                 tile.setFocusable(false);
 
-                tile.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        if (gameOver) {
-                            return;
-                        }
-                        var tile = (JButton) e.getSource();
-                        if (tile.getText().isEmpty()) {
-                            checkWinner();
-                            if (!gameOver) {
-                                tile.setText(CURRENT_PLAYER);
-                                CURRENT_PLAYER = CURRENT_PLAYER.equals(PLAYER_X) ? PLAYER_O : PLAYER_X;
-                            }
+                tile.addActionListener(e -> {
+                    if (gameOver) {
+                        return;
+                    }
+                    var tile1 = (JButton) e.getSource();
+                    if (tile1.getText().isEmpty()) {
+                        checkWinner();
+                        if (!gameOver) {
+                            tile1.setText(CURRENT_PLAYER);
+                            CURRENT_PLAYER = CURRENT_PLAYER.equals(PLAYER_X) ? PLAYER_O : PLAYER_X;
                         }
                     }
                 });
